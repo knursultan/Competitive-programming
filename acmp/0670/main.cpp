@@ -28,36 +28,33 @@ typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 const int MAXN = (int)1e4 + 1;
 
-string s, maxi;
 
-void compare(int i, int j){
-	string tmp = "";
-	for (int k = 0; k < sz(s); k++){
-		if (k == i || k == j)
-			continue;
-		tmp += s[k];
-	}
-	for (int t = 0; t < sz(tmp); t++){
-		if (tmp[t] > maxi[t]){
-			maxi = tmp;
-			break;
-		} else if (tmp[t] < maxi[t])
-			break;
+int n, t;
+bool a[10];
+
+bool check(int q){
+	for (int j = 0; j < 10; j++)
+		a[j] = 0;
+		
+	while (q){
+		if (!a[q % 10])
+			a[q % 10] = 1;
 		else
-			continue;
+			return 0;
+		q /= 10;
 	}	
+	return 1;
 }
+
 int main(){
-	cin >> s;	
-	for (int i = 0; i < sz(s) - 2; i++)
-		maxi += s[i];
-	
-	for (int i = 0; i < sz(s); i++){
-		for (int j = 0; j < sz(s); j++){
-			if (i != j)
-				compare(i, j);			
-		}
+	scanf ("%d", &n);
+	for (int i = 1; ; i++){
+		if (check(i))
+			t++;
+		if (t == n){
+			printf ("%d\n", i);
+			return 0;
+		}		
 	}
-	cout << maxi << '\n';
-	return 0;
+	return 0;	
 }
