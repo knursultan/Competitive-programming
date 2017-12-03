@@ -99,20 +99,6 @@ int main(){
 				q = quality[i];
 				ll = len[i];
 				cc = c[i];
-			} else if (q == quality[i]) {
-				if (ll > len[i]) {
-					p = i;
-					q = quality[i];
-					ll = len[i];
-					cc = c[i];				
-				} else if (ll == len[i]){
-					if (cc > c[i]){
-						p = i;
-						q = quality[i];
-						ll = len[i];
-						cc = c[i];				
-					}
-				}
 			}
 		}
 		cout << p << ' ' << t[p] << '\n';
