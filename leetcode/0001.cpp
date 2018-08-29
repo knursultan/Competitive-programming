@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -20,20 +21,21 @@ class Input {
 };
 
 class Solution {
-	public:
-		vector<int> twoSum(vector<int>& nums, int target) {
-		    vector <int> v;
-		    for (int i = 0; i < nums.size(); i++) {
-		        for (int j = 0; j < nums.size(); j++) {
-		            if (i == j) continue;
-		            if (nums[i] + nums[j] == target) {
-		                v.push_back(i);
-		                v.push_back(j);
-		                return v;
-		            }
-		        }
-		    }
+public:
+	vector<int> twoSum(vector<int>& nums, int target) {
+		map <int, int> m;
+		vector <int> result;
+		
+		for (int i = 0; i < nums.size(); i++) {
+			if (m.find(nums[i]) == m.end())
+				m[target - nums[i]] = i;
+			else {
+				result.push_back(m[nums[i]]);
+				result.push_back(i);	
+				return result; 
+			}
 		}
+	}
 };
 
 int main() {
