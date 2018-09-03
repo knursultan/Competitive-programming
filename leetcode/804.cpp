@@ -6,6 +6,7 @@
 	4) create morse code string & add to map
 	5) print the map size
 
+	the complexity is O(words.size() * words[i].size())
 */
 
 
