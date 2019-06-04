@@ -9,20 +9,30 @@ var merge = function(nums1, m, nums2, n) {
     var i = 0,
         j = 0,
         ans = [];
+    if (nums1.length === 0) {
+        for (var q = 0; q < nums2.length; q++)
+            nums1[q] = nums2[q];
+        return nums1;
+    }
     
+    if (nums2.length === 0)
+        return nums1;
+
     while(true) {
         if (i === m) {
             for (var k = j; k < n; k++)
                 ans.push(nums2[k]);
-            nums1 = ans;
-            console.log(nums1);
-            return ans;
+            for (var q = 0; q < ans.length; q++)
+                nums1[q] = ans[q];
+            return nums1;
         }
         
         if (j === n) {
             for (var k = i; k < m; k++)
-                ans.push(nums2[k]);
-            return ans;
+                ans.push(nums1[k]);
+            for (var q = 0; q < ans.length; q++)
+                nums1[q] = ans[q];
+            return nums1;
         }        
                 
         if (nums1[i] <= nums2[j]) {
