@@ -1,7 +1,5 @@
 /**
- * @param {string} s
- * @param {number} numRows
- * @return {string}
+	bad solution
  */
 var convert = function(s, numRows) {
     var array = [],
@@ -62,5 +60,35 @@ var convert = function(s, numRows) {
                 ans += array[y][x];
         }
     }
+    return ans;    
+};
+
+
+
+/**
+	good solution
+ */
+var convert = function(s, numRows) {
+    var array = [],
+        sz = s.length,
+        goingDown = false,
+        curRow = 0,
+        ans = '';
+    
+    if (numRows === 1)
+        return s;
+    
+    for (var i = 0; i < numRows; i++)
+        array[i] = '';
+
+    for (var i = 0; i < sz; i++) {
+        array[curRow] += s[i];
+        if (curRow === 0 || curRow === numRows - 1)
+            goingDown = !goingDown;
+        curRow += goingDown ? 1 : -1;
+    }
+    
+    for (var i = 0; i < numRows; i++)
+        ans += array[i];
     return ans;    
 };
