@@ -1,4 +1,5 @@
 // Время O(log(A.size))
+// Память O(A.size)
 
 class Solution {
 public:
