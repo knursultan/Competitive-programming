@@ -3,7 +3,8 @@
 using namespace std;
 
 
-class BST {
+class BST {	
+public:
 	struct node {
 		int data;
 		node* left;
@@ -102,8 +103,8 @@ class BST {
 		}
 		return t;
 	}
-	
-public:
+
+
 	// constructor
 	BST() {
 		root = NULL;
